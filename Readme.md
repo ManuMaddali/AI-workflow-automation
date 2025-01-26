@@ -119,6 +119,7 @@ Follow these instructions to set up and run the project on your local machine.
     Open your broswer and go to: http://localhost:3000
    
 ---
+
 ## Project Structure
     workflow_automation_mvp/
     ├── backend/                  # Backend folder for Flask-based server-side logic
@@ -172,13 +173,16 @@ Contributions are welcome! To contribute:
 
 ## Contact
 
-   **For inquiries or collaboration, feel free to reach out:**
-     Name: Manu Maddali
-     Email: manumaddali7@gmail.com
+1. **For inquiries or collaboration, feel free to reach out:**
+    manumaddali7@gmail.com
 
-## About Me
+---
+
+## About
+1. **Me**
     I am a Product Manager and Backend Developer with 3 years of experience in financial technology and data science. 
     
+2. **Open AI Operator** 
     OpenAI’s Operator framework inspired me because it’s a powerful tool that connects different pieces of technology seamlessly, making it easier to automate tasks that would normally take hours of manual effort. I wanted to build something that demonstrates how AI can not only save time but also empower businesses to focus on what truly matters—innovation, creativity, and growth. This project is my way of exploring the practical, real-world impact of AI while challenging myself to create something scalable, useful, and accessible to small and medium businesses. It’s exciting to be part of a movement where technology is reshaping the way we work.
 
 
