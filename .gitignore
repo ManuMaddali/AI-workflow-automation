@@ -1,0 +1,10 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.db
+
+# Node.js
+node_modules/
+dist/
