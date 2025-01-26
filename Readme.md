@@ -115,13 +115,11 @@ Follow these instructions to set up and run the project on your local machine.
    cd frontend
    yarn start
 
-3. **Final Step**
-   Open your broswer and go to: http://localhost:3000
+3. **Final Step:**
+    Open your broswer and go to: http://localhost:3000
    
 ---
 ## Project Structure
-
-    ```bash
     workflow_automation_mvp/
     ├── backend/                  # Backend folder for Flask-based server-side logic
     │   ├── app/                  # Main application logic
@@ -149,4 +147,35 @@ Follow these instructions to set up and run the project on your local machine.
     ├── requirements.txt          # Python dependencies required for the backend
     ├── run.sh                    # Shell script for setting up and running the project
     └── test_imports.py           # Script to verify all imports and dependencies are working
+
+---
+
+## Project Structure
+Contributions are welcome! To contribute:
+1. **Clone the Repository**
+   
+2. **Create a new branch:**
+    git checkout -b feature/YourFeature
+
+3. **Commit your changes:**
+    git commit -m "Add YourFeature"
+
+4. **Push to the branch:**
+    git push origin feature/YourFeature
+
+5. **Final Step: Open a Pull Request**
+
+---
+
+## Contact
+
+   **For inquiries or collaboration, feel free to reach out:**
+     Name: Manu Maddali
+     Email: manumaddali7@gmail.com
+
+
+
+
+    
+
 
