@@ -121,7 +121,7 @@ Follow these instructions to set up and run the project on your local machine.
 ---
 ## Project Structure
 
-    ```plaintext
+    ```bash
     workflow_automation_mvp/
     ├── backend/                  # Backend folder for Flask-based server-side logic
     │   ├── app/                  # Main application logic
