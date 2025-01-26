@@ -155,12 +155,15 @@ Contributions are welcome! To contribute:
 1. **Clone the Repository**
    
 2. **Create a new branch:**
+    ```bash
     git checkout -b feature/YourFeature
 
 3. **Commit your changes:**
+    ```bash
     git commit -m "Add YourFeature"
 
 4. **Push to the branch:**
+    ```bash
     git push origin feature/YourFeature
 
 5. **Final Step: Open a Pull Request**
