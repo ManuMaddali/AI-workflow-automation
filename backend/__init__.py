@@ -3,8 +3,7 @@ from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from dotenv import load_dotenv
-from .app.routes import routes  # Import the Blueprint from routes.py
-import os
+
 
 # Load environment variables
 load_dotenv()
