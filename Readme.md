@@ -104,20 +104,110 @@ Follow these instructions to set up and run the project on your local machine.
 
 ### Running the Application
 
-1. **Start the Backend**
+To run the application locally and test the full functionality, including the Operator-powered workflow execution, follow these steps:
+
+---
+
+#### **1. Start the Backend**
+The backend is a Flask server that powers the API for this application.
+
+1. Navigate to the `backend` directory:
    ```bash
    cd backend
-   source venv/bin/activate
+   ```
+2. Activate the virtual environment:
+   ```bash
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Start the Flask server:
+   ```bash
    flask run --host=127.0.0.1 --port=5000
+   ```
 
-2. **Start the Frontend**
+---
+
+#### **2. Start the Frontend**
+The frontend is built with React and provides the user interface.
+
+1. Navigate to the `frontend` directory:
    ```bash
    cd frontend
+   ```
+2. Install dependencies:
+   ```bash
+   yarn install  # or npm install
+   ```
+3. Start the development server:
+   ```bash
    yarn start
+   ```
+4. Open the React application in your browser at:
+   ```
+   http://localhost:3000
+   ```
 
-3. **Final Step:**
-    Open your broswer and go to: http://localhost:3000
-   
+---
+
+#### **3. Test a Use Case with Operator**
+This guide will walk you through testing a workflow that uses Operator for execution.
+
+##### **Step 1: Add a User**
+To create a workflow, you first need to add a user. Use the `/add_user` API endpoint:
+
+1. Open Postman or use `curl` to send this request:
+   ```bash
+   curl -X POST http://127.0.0.1:5000/add_user \
+   -H "Content-Type: application/json" \
+   -d '{"email": "testuser@example.com", "password_hash": "hashedpassword123"}'
+   ```
+2. The response will include the new user's ID:
+   ```json
+   {"message": "User added successfully!", "id": 1}
+   ```
+
+##### **Step 2: Add a Workflow**
+Now, create a workflow associated with the user. Use the `/add_workflow` endpoint:
+
+1. Send this request:
+   ```bash
+   curl -X POST http://127.0.0.1:5000/add_workflow \
+   -H "Content-Type: application/json" \
+   -d '{
+         "user_id": 1,
+         "name": "Sample Workflow",
+         "description": "A workflow for testing",
+         "steps": ["Write an email to a client", "Summarize yesterday''s sales report"]
+       }'
+   ```
+2. The response will include the workflow ID:
+   ```json
+   {"message": "Workflow added successfully!", "id": 1}
+   ```
+
+##### **Step 3: Execute the Workflow**
+Finally, execute the workflow using the `/execute_workflow/<id>` endpoint:
+
+1. Send this request:
+   ```bash
+   curl -X POST http://127.0.0.1:5000/execute_workflow/1
+   ```
+2. The response will include execution logs:
+   ```json
+   {
+     "message": "Workflow executed",
+     "logs": [
+       "Executing step: Write an email to a client",
+       "Result: Subject: Update on Project Progress and Next Steps...",
+       "Executing step: Summarize yesterday's sales report",
+       "Result: AI models predict a 12% increase in sales..."
+     ]
+   }
+   ```
+
 ---
 
 ## Project Structure
@@ -184,10 +274,6 @@ Contributions are welcome! To contribute:
     
 2. **Operator:** 
      OpenAI’s Operator framework inspired me because it’s a powerful tool that connects different pieces of technology seamlessly, making it easier to automate tasks that would normally take hours of manual effort. I wanted to build something that demonstrates how AI can not only save time but also empower businesses to focus on what truly matters—innovation, creativity, and growth. This project is my way of exploring the practical, real-world impact of AI while challenging myself to create something scalable, useful, and accessible to small and medium businesses. It’s exciting to be part of a movement where technology is reshaping the way we work.
-    
-## Operator Integration
-
-    This project leverages **OpenAI's Operator Framework** to handle key workflow automation tasks. The Operator is central to the automation process and powers intelligent decision-making within workflows.
 
 ### Current Capabilities
 
@@ -217,7 +303,17 @@ Contributions are welcome! To contribute:
         "Summarize yesterday's sales report"
         ]
     }
-
+2. **Execution Logs:**:
+    ```json
+    {
+        "message": "Workflow executed",
+        "logs": [
+        "Executing step: Write an email to a client",
+        "Result: Dear [Client], I hope this email finds you well...",
+        "Executing step: Summarize yesterday's sales report",
+        "Result: Sales increased by 12% compared to the previous day..."
+        ]
+    }
 
 
 
