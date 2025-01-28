@@ -182,8 +182,42 @@ Contributions are welcome! To contribute:
 1. **Me:**
      I am a Product Manager and Backend Developer with 3 years of experience in financial technology and data science. 
     
-2. **Operato:** 
+2. **Operator:** 
      OpenAI’s Operator framework inspired me because it’s a powerful tool that connects different pieces of technology seamlessly, making it easier to automate tasks that would normally take hours of manual effort. I wanted to build something that demonstrates how AI can not only save time but also empower businesses to focus on what truly matters—innovation, creativity, and growth. This project is my way of exploring the practical, real-world impact of AI while challenging myself to create something scalable, useful, and accessible to small and medium businesses. It’s exciting to be part of a movement where technology is reshaping the way we work.
+    
+## Operator Integration
+
+    This project leverages **OpenAI's Operator Framework** to handle key workflow automation tasks. The Operator is central to the automation process and powers intelligent decision-making within workflows.
+
+### Current Capabilities
+
+ - **Prompt Handling**:
+    - The Operator processes user prompts and system instructions via the OpenAI API  to generate responses.
+    - Example: Generate a professional email or summarize a report.
+
+ - **Workflow Execution**:
+    - Automates multi-step workflows by iterating over the steps defined in each workflow.
+    - Example: A workflow with steps like "Write an email" and "Summarize a report" will execute each step in sequence and log the results.
+
+ - **Error Handling**:
+    - Captures and logs errors that occur during the execution of individual steps, ensuring transparency and facilitating debugging.
+    
+### Example Workflow Execution
+
+    Here’s a sample workflow executed by the Operator:
+
+1. **Workflow Definition**:
+    ```json
+    {
+        "user_id": 1,
+        "name": "Client Update Workflow",
+        "description": "A workflow to send a client update email",
+        "steps": [
+        "Write an email to a client",
+        "Summarize yesterday's sales report"
+        ]
+    }
+
 
 
 
