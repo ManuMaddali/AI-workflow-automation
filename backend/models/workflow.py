@@ -11,5 +11,8 @@ class Workflow(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
+    # New field for prompt templates
+    prompt_templates = db.Column(db.JSON, nullable=True)
+    
     # Define relationship with User
     user = db.relationship('User', backref=db.backref('workflows', lazy=True))

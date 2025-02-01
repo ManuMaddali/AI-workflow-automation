@@ -11,7 +11,7 @@ def operator_request(prompt, system_role="assistant"):
     Sends a prompt to Operator using the new OpenAI API interface.
     """
     try:
-        response = client.chat.completions.create(model="gpt-4",
+        response = client.chat.completions.create(model="gpt-4o-mini",
         messages=[
             {"role": "system", "content": system_role},
             {"role": "user", "content": prompt},
