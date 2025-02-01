@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, current_app
 from backend.__init__ import db
 from backend.models.user import User
 from backend.operator_utils import operator_request
@@ -14,29 +14,30 @@ def add_user():
     from backend import db
     from backend.models.user import User
 
-    try:
-        data = request.json
+    with current_app.app_context():
+        try:
+            data = request.json
 
-        # Validate input
-        if not data or not data.get("email") or not data.get("password_hash"):
-            return jsonify({"error": "Invalid input"}), 400
+            # Validate input
+            if not data or not data.get("email") or not data.get("password_hash"):
+                return jsonify({"error": "Invalid input"}), 400
 
-        # Check for existing user with the same email
-        existing_user = User.query.filter_by(email=data["email"]).first()
-        if existing_user:
-            return jsonify({"error": "User with this email already exists"}), 400
+            # Check for existing user with the same email
+            existing_user = User.query.filter_by(email=data["email"]).first()
+            if existing_user:
+                return jsonify({"error": "User with this email already exists"}), 400
 
-        # Create a new User instance
-        new_user = User(email=data["email"], password_hash=data["password_hash"])
-        db.session.add(new_user)
-        db.session.commit()
+            # Create a new User instance
+            new_user = User(email=data["email"], password_hash=data["password_hash"])
+            db.session.add(new_user)
+            db.session.commit()
 
-        # Return a response with the user ID
-        return jsonify({"message": "User added successfully!", "id": new_user.id})
+            # Return a response with the user ID
+            return jsonify({"message": "User added successfully!", "id": new_user.id})
 
-    except Exception as e:
-        db.session.rollback()
-        return jsonify({"error": str(e)}), 500
+        except Exception as e:
+            db.session.rollback()
+            return jsonify({"error": str(e)}), 500
 
 
 @routes.route("/users", methods=["GET"])
